@@ -37,7 +37,7 @@ public class GenericValidation {
 		
 	}
 	
-	public void validationPageCartProduct() {
+	public void validationProduct() {
 		
 		wait.loadElement(genericPage.getProductLabel());
 		String label = genericPage.getProductLabel().getText();
@@ -50,6 +50,22 @@ public class GenericValidation {
 		wait.loadElement(genericPage.getHomeTextSpan());
 		String label = genericPage.getHomeTextSpan().getText();
 		Assertions.assertEquals("CHECKOUT: YOUR INFORMATION", label);
+		
+	}
+	
+	public void validationPageCheckoutOverview() {
+		
+		wait.loadElement(genericPage.getHomeTextSpan());
+		String label = genericPage.getHomeTextSpan().getText();
+		Assertions.assertEquals("CHECKOUT: OVERVIEW", label);
+		
+	}
+	
+	public void validationPageFinish() {
+		
+		wait.loadElement(genericPage.getHomeTextSpan());
+		String label = genericPage.getHomeTextSpan().getText();
+		Assertions.assertEquals("CHECKOUT: COMPLETE!", label);
 		
 	}
 	

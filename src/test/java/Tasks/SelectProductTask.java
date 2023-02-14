@@ -31,7 +31,7 @@ public class SelectProductTask {
 		selectProductPage.getProductAddButton().click();
 		selectProductPage.getCartButton().click();
 		genericValidation.validationPageCart();
-		genericValidation.validationPageCartProduct();
+		genericValidation.validationProduct();
 		cartPage.getCheckoutButton().click();
 		Thread.sleep(2000);
 		genericValidation.validationPageCheckout();
