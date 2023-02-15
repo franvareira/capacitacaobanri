@@ -39,5 +39,18 @@ public class ReportFactory {
 		
 		
 	}
+	
+	protected synchronized static ExtentReports getInstance() {
+		
+		if (extentReports == null) {
+			
+			configReportExtent();
+		
+		}
+		
+		return extentReports;
+
+	}
+
 
 }

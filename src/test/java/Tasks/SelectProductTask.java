@@ -25,7 +25,7 @@ public class SelectProductTask {
 	
 	
 	
-	public void selecionarProduto() throws InterruptedException {
+	public void selecionarProduto() {
 		
 		
 		selectProductPage.getProductAddButton().click();
@@ -33,7 +33,6 @@ public class SelectProductTask {
 		genericValidation.validationPageCart();
 		genericValidation.validationProduct();
 		cartPage.getCheckoutButton().click();
-		Thread.sleep(2000);
 		genericValidation.validationPageCheckout();
 		
 		

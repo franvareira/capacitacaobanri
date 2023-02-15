@@ -3,7 +3,11 @@ package Validations;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.WebDriver;
 
+import com.aventstack.extentreports.Status;
+
 import Framework.Browser.Waits;
+import Framework.Report.Report;
+import Framework.Report.Screenshot;
 import PageObjects.GenericPage;
 
 public class GenericValidation {
@@ -23,26 +27,46 @@ public class GenericValidation {
 	
 	public void validationPageProducts() {
 		
-		wait.loadElement(genericPage.getHomeTextSpan());
-		String label = genericPage.getHomeTextSpan().getText();
-		Assertions.assertEquals("PRODUCTS", label);
-		
-	}
+		try {
+			wait.loadElement(genericPage.getHomeTextSpan());
+			String label = genericPage.getHomeTextSpan().getText();
+			Assertions.assertEquals("PRODUCTS", label);
+			Report.log(Status.PASS, "Acessou a pagina de produtos com sucesso", Screenshot.captureBase64(driver));
+		}catch(Exception e) {
+			
+			Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
+		}
+}
 	
 	public void validationPageCart() {
 		
-		wait.loadElement(genericPage.getHomeTextSpan());
-		String label = genericPage.getHomeTextSpan().getText();
-		Assertions.assertEquals("YOUR CART", label);
+		try {
 		
-	}
+			wait.loadElement(genericPage.getHomeTextSpan());
+			String label = genericPage.getHomeTextSpan().getText();
+			Assertions.assertEquals("YOUR CART", label);
+			Report.log(Status.PASS, "Acessou pagina de carrinho com sucesso", Screenshot.captureBase64(driver));
+		
+		}catch(Exception e) {
+		
+			Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
+		}
+}
 	
 	public void validationProduct() {
 		
-		wait.loadElement(genericPage.getProductLabel());
-		String label = genericPage.getProductLabel().getText();
-		Assertions.assertEquals("Sauce Labs Backpack", label);
+		try {
+			wait.loadElement(genericPage.getProductLabel());
+			String label = genericPage.getProductLabel().getText();
+			Assertions.assertEquals("Sauce Labs Backpack", label);
+			//Report.log(Status.PASS, "Produto selecionado corretamente: " + label );
+			Report.log(Status.PASS, "Produto carregado " , Screenshot.captureBase64(driver) );
+			Report.log(Status.INFO, "O produto selecionado foi : " + label);
 		
+		}catch(Exception e) {
+			
+			Report.log(Status.FAIL, e.getMessage(), Screenshot.captureBase64(driver));
+		}
 	}
 	
 	public void validationPageCheckout() {
