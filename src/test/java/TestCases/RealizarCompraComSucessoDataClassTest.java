@@ -1,7 +1,7 @@
 package TestCases;
 
 import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.CsvFileSource;
+import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.WebDriver;
 
 import com.aventstack.extentreports.Status;
@@ -15,7 +15,7 @@ import Tasks.FinishTask;
 import Tasks.HomeTask;
 import Tasks.SelectProductTask;
 
-public class RealizarCompraComSucessoCSVTest extends TestBase {
+public class RealizarCompraComSucessoDataClassTest extends TestBase {
 	
 	private WebDriver driver = this.getDriverManager();
 
@@ -25,12 +25,12 @@ public class RealizarCompraComSucessoCSVTest extends TestBase {
 	FinishTask finishTask = new FinishTask(driver);
 	
 	@ParameterizedTest
-	@CsvFileSource(resources = "/CSV/users.csv",numLinesToSkip = 1)
+	@MethodSource("Framework.Utils.DataClass#loginTestData")
 	public void realizarCompra(String user, String password)  {
 		
 		try {
 		
-			Report.createTest("Realizar Compra com Sucesso via CSV", ReportType.GROUP);
+			Report.createTest("Realizar Compra com Sucesso via DataClass", ReportType.GROUP);
 			Report.createStep("Realizar Login");
 			homeTask.efetuarLoginParametrizado(user, password);
 			Report.createStep("Selecionar Produto e Realizar Checkout");

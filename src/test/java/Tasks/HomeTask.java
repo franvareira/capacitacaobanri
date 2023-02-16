@@ -2,6 +2,7 @@ package Tasks;
 
 import org.openqa.selenium.WebDriver;
 
+import Framework.Utils.FileOperation;
 import PageObjects.HomePage;
 import Validations.GenericValidation;
 import Validations.LoginValidation;
@@ -34,11 +35,25 @@ public class HomeTask {
 		
 	}
 	
-	public void efetuarLoginCSV(String user, String password)  {
+	public void efetuarLoginParametrizado(String user, String password)  {
 		
 		loginValidation.validationLoginPage();
 		homePage.getUserNameInput().sendKeys(user);
 		homePage.getPasswordInput().sendKeys(password);
+		homePage.getLoginButton().click();
+		genericValidation.validationPageProducts();
+		
+		
+	}
+	
+	public void efetuarLoginProperties()  {
+		
+		//String user = FileOperation.getProperties("user").getProperty("user");
+		//String password = FileOperation.getProperties("user").getProperty("password");
+	
+		loginValidation.validationLoginPage();
+		homePage.getUserNameInput().sendKeys(FileOperation.getProperties("user").getProperty("user"));
+		homePage.getPasswordInput().sendKeys(FileOperation.getProperties("user").getProperty("password"));
 		homePage.getLoginButton().click();
 		genericValidation.validationPageProducts();
 		
