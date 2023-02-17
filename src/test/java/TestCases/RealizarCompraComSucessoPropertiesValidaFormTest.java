@@ -1,5 +1,7 @@
 package TestCases;
 
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 
@@ -24,6 +26,7 @@ public class RealizarCompraComSucessoPropertiesValidaFormTest extends TestBase {
 	FinishTask finishTask = new FinishTask(driver);
 	
 	@Test
+	@Tags({@Tag("regressao"),@Tag("positivo")})
 	public void realizarCompra()  {
 		
 		try {

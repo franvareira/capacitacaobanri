@@ -1,5 +1,6 @@
 package TestCases;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +26,7 @@ public class RealizarCompraComSucessoDataClassTest extends TestBase {
 	FinishTask finishTask = new FinishTask(driver);
 	
 	@ParameterizedTest
+	@Tag("positivo")
 	@MethodSource("Framework.Utils.DataClass#loginTestData")
 	public void realizarCompra(String user, String password)  {
 		

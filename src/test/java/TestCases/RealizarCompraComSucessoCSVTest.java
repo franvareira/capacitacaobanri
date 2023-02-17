@@ -1,5 +1,7 @@
 package TestCases;
 
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Tags;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvFileSource;
 import org.openqa.selenium.WebDriver;
@@ -25,6 +27,7 @@ public class RealizarCompraComSucessoCSVTest extends TestBase {
 	FinishTask finishTask = new FinishTask(driver);
 	
 	@ParameterizedTest
+	@Tags({@Tag("regressao"),@Tag("positivo")})
 	@CsvFileSource(resources = "/CSV/users.csv",numLinesToSkip = 1)
 	public void realizarCompra(String user, String password)  {
 		
